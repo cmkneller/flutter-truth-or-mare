@@ -39,8 +39,8 @@ class _AnimatedTextLogoState extends State<AnimatedTextLogo>
 
   @override
   void dispose() {
-    super.dispose();
     _controller.dispose();
+    super.dispose();
   }
 
   @override

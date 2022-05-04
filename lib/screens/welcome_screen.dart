@@ -5,12 +5,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/game.dart';
-import '../widgets/app_wide/GlassyBox.dart';
-import '../widgets/app_wide/AnimatedTextLogo.dart';
-import '../widgets/welcome/animated_welcome_logo.dart';
-import '../widgets/welcome/animated_welcome_button.dart';
-import '../widgets/app_wide/AnimatedHorseShoe.dart';
+import '../pages/intro.dart';
 
+import '../widgets/app_wide/animated_horse_shoe.dart';
 
 // Created statefull to implement animations later.
 class WelcomeScreen extends StatefulWidget {
@@ -45,65 +42,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ]),
         ),
         child: Stack(children: [
-        
           AnimatedHorseShoe(
-            top: 0.12,
+            top: 0.1,
             right: -0.07,
             width: .50,
             angle: -0.2,
-            containerDimensions: {
-              'width': deviceWidth,
-              'height': deviceHeight
-            },
+            containerDimensions: {'width': deviceWidth, 'height': deviceHeight},
           ),
           AnimatedHorseShoe(
-            bottom: -0.22,
+            bottom: -0.15,
             left: 0,
             width: 1,
             angle: 0.2,
-            containerDimensions: {
-              'width': deviceWidth,
-              'height': deviceHeight
-            },
+            containerDimensions: {'width': deviceWidth, 'height': deviceHeight},
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          PageView(
             children: [
-              const SizedBox(
-                height: 100,
-              ),
-              AnimatedTextLogo(),
+              intro(deviceHeight: deviceHeight),
               Container(
-                height: 0.75 * deviceHeight,
-                width: double.infinity,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    GlassyBox(
-                        topPosition: 0.33,
-                        height: .335,
-                        width: 0.85,
-                        padding: 0.15,
-                        title: "Don’t Be a Dosey Mare!",
-                        content: " Stop horsing around and tell the truth!",
-                        callToAction: "Click below to start game!"),
-                    AnimatedWelcomeLogo(
-                      bottom: 0.205,
-                      width: 1.08,
-                    ),
-                    Positioned(
-                        bottom: deviceHeight * 0.048,
-                        child: AnimatedWelcomeButton()),
-                  ],
-                ),
+               
               )
             ],
-          ),
+          )
         ]),
       ),
     );
   }
 }
-
-

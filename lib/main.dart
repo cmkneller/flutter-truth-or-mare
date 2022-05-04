@@ -28,6 +28,7 @@ import './providers/cards.dart';
 
 import 'db/db_helper.dart';
 import '../utility/failure.dart';
+import 'package:flutter/services.dart';
 
 
 /// Main entry point to app
@@ -35,6 +36,9 @@ import '../utility/failure.dart';
 /// Method is async as the game relies on data fetched from a local DB.
 Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
+      SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   // Loads App Data from database before starting app:
   Either<Failure, Map<String, List>> appData = await DBHelper.getAppData();

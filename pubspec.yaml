@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.15.1 <3.0.0'
+  sdk: '>=2.16.1 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,14 +31,14 @@ dependencies:
     sdk: flutter
   provider: ^6.0.2
   intl: ^0.17.0
-  sqflite:
-  path:
-  path_provider:
+  sqflite: ^2.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   either_dart: ^0.1.4
+  path: ^1.8.0
+  path_provider: ^2.0.9
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +67,7 @@ flutter:
     - assets/data/tomdata.db
     # Image Assets
     - assets/images/welcome-screen/w-splash.png
+    - assets/images/welcome-screen/horseshoe.png
     - assets/images/app-wide/avatar-1.png
     - assets/images/app-wide/avatar-2.png
     - assets/images/app-wide/avatar-3.png
@@ -76,6 +77,9 @@ flutter:
     - assets/images/app-wide/avatar-7.png
     - assets/images/app-wide/avatar-8.png
     - assets/images/app-wide/avatar-used.png
+    - assets/images/logo/mare_logo.png
+    - assets/images/logo/truth_logo.png
+    - assets/images/logo/or_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -88,17 +92,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+  fonts:
+    - family: atma
+      fonts:
+        - asset: assets/fonts/Atma-Regular.ttf
+        - asset: assets/fonts/Atma-Bold.ttf
+          weight: 900
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

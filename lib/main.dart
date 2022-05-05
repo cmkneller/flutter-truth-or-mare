@@ -5,6 +5,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:truthormare/providers/navigation.dart';
 import 'package:truthormare/screens/customise_game_screen.dart';
 import 'package:truthormare/screens/error_screen.dart';
 import 'package:truthormare/screens/round_intro_screen.dart';
@@ -30,14 +31,13 @@ import 'db/db_helper.dart';
 import '../utility/failure.dart';
 import 'package:flutter/services.dart';
 
-
 /// Main entry point to app
-/// 
+///
 /// Method is async as the game relies on data fetched from a local DB.
-Future <void> main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    WidgetsFlutterBinding.ensureInitialized();
-      SystemChrome.setPreferredOrientations(
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   // Loads App Data from database before starting app:
@@ -60,15 +60,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return appData.fold(
       (failure) => MaterialApp(
-       // Shows an error screen if accessing db throws an exception. 
+        // Shows an error screen if accessing db throws an exception.
         home: ErrorScreen(failure.errorContent),
       ),
-      (data) => MultiProvider( 
+      (data) => MultiProvider(
         // provides the [Game] and [Player] states to be accessed when needed
         // throughout the application
         providers: [
           ChangeNotifierProvider(
             create: (ctx) => PlayersProvider(),
+            lazy: false,
+          ),
+          ChangeNotifierProvider(
+            create: (ctx) => NavigationProvider(),
             lazy: false,
           ),
           ChangeNotifierProxyProvider<PlayersProvider, GameProvider>(
@@ -88,6 +92,22 @@ class MyApp extends StatelessWidget {
           title: 'Truth or Mare',
           theme: ThemeData(
             primarySwatch: Colors.blue,
+            fontFamily: 'atma',
+            textTheme: const TextTheme(
+                headline1: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                  height: 1.2,
+                ),
+                headline2: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  height: 1.2,
+                ),
+                bodyText1: TextStyle(
+                    fontSize: 16, color: Colors.white, letterSpacing: 1.2)),
           ),
 
           home: const WelcomeScreen(),

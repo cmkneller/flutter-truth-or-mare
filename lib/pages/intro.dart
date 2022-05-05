@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:truthormare/providers/game.dart';
+import 'package:truthormare/providers/navigation.dart';
 import '../widgets/app_wide/GlassyBox.dart';
 import '../widgets/app_wide/AnimatedTextLogo.dart';
 import '../widgets/welcome/animated_welcome_logo.dart';
@@ -14,6 +17,11 @@ class intro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NavigationProvider pageLogic = Provider.of<NavigationProvider>(context, listen: false);
+    void startGame() {
+      pageLogic.setPageID(1);
+    }
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,7 +49,14 @@ class intro extends StatelessWidget {
                 width: 1.08,
               ),
               Positioned(
-                  bottom: deviceHeight * 0.048, child: AnimatedWelcomeButton()),
+                  bottom: deviceHeight * 0.040,
+                  child: GlossyButton(
+                    Icon(
+                      Icons.arrow_forward_ios_rounded,
+                    ),
+                    startGame,
+                    40,
+                  )),
             ],
           ),
         )

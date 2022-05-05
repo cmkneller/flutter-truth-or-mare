@@ -80,6 +80,7 @@ flutter:
     - assets/images/logo/mare_logo.png
     - assets/images/logo/truth_logo.png
     - assets/images/logo/or_logo.png
+    - assets/images/round-number/minihorseshoe.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -96,6 +97,8 @@ flutter:
     - family: atma
       fonts:
         - asset: assets/fonts/Atma-Regular.ttf
+        - asset: assets/fonts/Atma-Medium.ttf
+          weight: 500
         - asset: assets/fonts/Atma-Bold.ttf
           weight: 900
 

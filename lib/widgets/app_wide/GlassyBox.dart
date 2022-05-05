@@ -54,22 +54,18 @@ class GlassyBox extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                        fontFamily: "atma",
-                        fontSize: 30,
-                        fontWeight: FontWeight.w900,
-                        color: Colors.white,
-                        height: 1.2),
+                    style: Theme.of(context).textTheme.headline1,
                     textAlign: TextAlign.center,
                   ),
                   Text(content,
-                      style: const TextStyle(fontSize: 16, color: Colors.white),
+                      style: Theme.of(context).textTheme.bodyText1,
                       textAlign: TextAlign.center),
                   if (callToAction != null)
-                    Text(callToAction!,
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
-                        textAlign: TextAlign.center),
+                    Text(
+                      callToAction!,
+                      style: Theme.of(context).textTheme.bodyText1,
+                      textAlign: TextAlign.center,
+                    ),
                 ]),
           ),
         ),

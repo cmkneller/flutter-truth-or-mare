@@ -14,15 +14,15 @@ import '../screens/round_intro_screen.dart';
 /// Used to keep track of the game status
 enum GameStatus { setup, round, playerIntro, mainGame, finalScores }
 
-
 /// Handles main game logic.
-/// 
+///
 /// Provides amount of rounds, current rounds and current game mode.
 /// Provides funtionality to adjust the round amount
 /// and to increment the current round.
 
 class GameProvider with ChangeNotifier {
   int _playersInRound = 0;
+  int pageIndex = 0;
   int _turnIdx = 0;
   int _roundAmount = 1;
   int _currentRound = 1;
@@ -65,11 +65,9 @@ class GameProvider with ChangeNotifier {
     return _currentRound;
   }
 
-
   void setGameReadyStatus(bool status) {
     _gameReady = status;
   }
-
 
   void setPlayers(List<Player> playerList) {
     _playerList = playerList;
@@ -111,6 +109,15 @@ class GameProvider with ChangeNotifier {
 
   set currentStatus(GameStatus status) {
     _currentStatus = status;
+  }
+
+  void setPageIndex(int i) {
+    pageIndex = i;
+    notifyListeners();
+  }
+
+  int get getPageIndex {
+    return pageIndex;
   }
 
   String get nextRoute {

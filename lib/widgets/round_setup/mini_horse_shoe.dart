@@ -27,6 +27,13 @@ class _MiniHorseShoeState extends State<MiniHorseShoe>
   late double angle;
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   initState() {
     angle = widget.index * math.pi * 2 / widget.itemCount;
     _controller =

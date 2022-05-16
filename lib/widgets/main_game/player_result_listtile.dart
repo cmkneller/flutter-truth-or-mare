@@ -14,7 +14,7 @@ class PlayerResultListTile extends StatelessWidget {
         padding: EdgeInsets.all(8),
         child: ListTile(
           leading: CircleAvatar(
-            child: Image.asset(player.avatar.getImageUrl),
+            child: Image.asset(player.avatar.smallImageUrl),
           ),
           title: Text(player.name),
         ),

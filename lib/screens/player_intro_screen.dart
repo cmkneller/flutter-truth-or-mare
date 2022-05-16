@@ -40,7 +40,7 @@ class _PlayerIntroScreenState extends State<PlayerIntroScreen> {
           children: [
             CircleAvatar(
               child: Image.asset(
-                currentPlayer.avatar.getImageUrl,
+                currentPlayer.avatar.fullImageUrl,
                 width: 200,
               ),
               radius: 150,

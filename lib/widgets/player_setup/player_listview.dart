@@ -11,8 +11,18 @@ class PlayerListView extends StatelessWidget {
   Widget build(BuildContext context) {
     PlayersProvider playerData = Provider.of<PlayersProvider>(context);
     List<Player> playerList = playerData.playerList;
+    double deviceHeight = MediaQuery.of(context).size.height;
 
-    return Expanded(
+    return Container(
+      height: deviceHeight * 0.45,
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+            Color.fromRGBO(106, 183, 69, 1),
+            Color.fromRGBO(173, 203, 90, 1)
+          ])),
       child: ListView.builder(
         itemCount: playerList.length,
         itemBuilder: (ctx, i) => PlayerListTile(playerList[i].id,

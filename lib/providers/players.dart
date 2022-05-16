@@ -4,19 +4,10 @@
 // Version: 1.
 
 import 'package:flutter/material.dart';
+import '../models/avatar.dart';
 import '../models/player.dart';
 
 // List of paths to player avatar images.
-List<String> avatarPaths = [
-  "assets/images/app-wide/avatar-1.png",
-  "assets/images/app-wide/avatar-2.png",
-  "assets/images/app-wide/avatar-3.png",
-  "assets/images/app-wide/avatar-4.png",
-  "assets/images/app-wide/avatar-5.png",
-  "assets/images/app-wide/avatar-6.png",
-  "assets/images/app-wide/avatar-7.png",
-  "assets/images/app-wide/avatar-8.png",
-];
 
 /// Handles Player List Logic.
 ///
@@ -24,7 +15,6 @@ List<String> avatarPaths = [
 /// Generates [Player] from user input and adds to [_playerList].
 /// Facilitates the removal of [Player]s.
 class PlayersProvider with ChangeNotifier {
-
   List<Player> _playerList = [];
   final List<Avatar> _avatarList = [];
   int _playerAmount = 0;
@@ -32,14 +22,15 @@ class PlayersProvider with ChangeNotifier {
   bool _avatarSelected = false;
 
   PlayersProvider() {
-  // List of avatars generated inside constructor.
+    // List of avatars generated inside constructor.
     _fillOutAvatars();
   }
 
   /// Loops through [avatarPaths] and generates a list of [Avatar] instances.
   void _fillOutAvatars() {
-    for (int i = 0; i < avatarPaths.length; i++) {
-      _avatarList.add(Avatar(i + 1, avatarPaths[i]));
+    for (int i = 0; i < 8; i++) {
+      Avatar genAvatar = Avatar(i);
+      _avatarList.add(genAvatar);
     }
   }
 
@@ -55,14 +46,14 @@ class PlayersProvider with ChangeNotifier {
     _resetAvatars();
   }
 
- /// Adds [player] to [_playerList] and updates [_playerAmount].
+  /// Adds [player] to [_playerList] and updates [_playerAmount].
   void _addToList(Player player) {
     _playerList.add(player);
     _playerAmount = _playerList.length;
     notifyListeners();
   }
 
- /// Removes [Player] from [_playerList] based on [id].
+  /// Removes [Player] from [_playerList] based on [id].
   void removePlayer(id) {
     Player removedPlayer = playerList.firstWhere((player) => player.id == id);
     removedPlayer.avatar.setAvailability(true);
@@ -126,7 +117,7 @@ class PlayersProvider with ChangeNotifier {
     return _playerAmount;
   }
 
-/// Returns a list of [Player]s ordered by score.
+  /// Returns a list of [Player]s ordered by score.
   List<Player> get topScores {
     List<Player> sortedList = [..._playerList];
     sortedList.sort((a, b) => b.score.compareTo(a.score));

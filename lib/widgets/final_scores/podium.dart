@@ -12,7 +12,7 @@ class Podium extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(
-          child: Image.asset(player.avatar.getImageUrl),
+          child: Image.asset(player.avatar.smallImageUrl),
         ),
         SizedBox(
           height: 10,

@@ -107,7 +107,12 @@ class MyApp extends StatelessWidget {
                   height: 1.2,
                 ),
                 bodyText1: TextStyle(
-                    fontSize: 16, color: Colors.white, letterSpacing: 1.2)),
+                    fontSize: 16, color: Colors.white, letterSpacing: 1.2),
+                labelMedium: TextStyle(
+                  fontSize: 16,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    letterSpacing: 1.2)),
           ),
 
           home: const WelcomeScreen(),

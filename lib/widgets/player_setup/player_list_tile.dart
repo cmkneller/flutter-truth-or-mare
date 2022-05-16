@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/models/player.dart';
+import '../../models/avatar.dart';
 
 class PlayerListTile extends StatelessWidget {
   final String playerId;
@@ -22,7 +22,7 @@ class PlayerListTile extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: ListTile(
             leading: CircleAvatar(
-              child: Image.asset(playerAvatar.getImageUrl),
+              child: Image.asset(playerAvatar.smallImageUrl),
             ),
             title: Text(playerName),
           ),

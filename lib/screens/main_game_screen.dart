@@ -64,7 +64,7 @@ class MainGameScreen extends StatelessWidget {
         ),
         actions: [
           Text("Round: " + gameData.currentRound.toString()),
-          PlayerIcon(currentPlayer.avatar.getImageUrl, currentPlayer.score)
+          PlayerIcon(currentPlayer.avatar.smallImageUrl, currentPlayer.score)
         ],
       ),
       body: Column(

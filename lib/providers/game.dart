@@ -88,6 +88,11 @@ class GameProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void setRoundAmount(int roundAmount) {
+    _roundAmount = roundAmount;
+    notifyListeners();
+  }
+
   void incrementTurn() {
     if (_turnIdx == _playersInRound - 1) {
       _turnIdx = 0;

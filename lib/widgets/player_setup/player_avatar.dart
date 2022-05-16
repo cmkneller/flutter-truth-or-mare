@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:truthormare/models/player.dart';
 
+import '../../models/avatar.dart';
+
 class PlayerAvatar extends StatelessWidget {
   final Avatar _playerAvatar;
   final String avatarUsedImagePath =
@@ -31,7 +33,7 @@ class PlayerAvatar extends StatelessWidget {
               children: [
                 Center(
                   child: Image.asset(
-                    _playerAvatar.getImageUrl,
+                    _playerAvatar.smallImageUrl,
                     width: 50,
                   ),
                 ),

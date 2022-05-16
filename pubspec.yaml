@@ -68,19 +68,34 @@ flutter:
     # Image Assets
     - assets/images/welcome-screen/w-splash.png
     - assets/images/welcome-screen/horseshoe.png
-    - assets/images/app-wide/avatar-1.png
-    - assets/images/app-wide/avatar-2.png
-    - assets/images/app-wide/avatar-3.png
-    - assets/images/app-wide/avatar-4.png
-    - assets/images/app-wide/avatar-5.png
-    - assets/images/app-wide/avatar-6.png
-    - assets/images/app-wide/avatar-7.png
-    - assets/images/app-wide/avatar-8.png
-    - assets/images/app-wide/avatar-used.png
     - assets/images/logo/mare_logo.png
     - assets/images/logo/truth_logo.png
     - assets/images/logo/or_logo.png
     - assets/images/round-number/minihorseshoe.png
+    - assets/images/round-number/sign.png
+    - assets/images/player/backgroundPlate.png
+    - assets/images/player/foregroundPlate.png
+    - assets/images/player/midgroundPlate.png
+    - assets/images/player/cloud1.png
+    - assets/images/player/cloud2.png
+    - assets/images/player/sign.png
+    - assets/images/player/sign.png
+    - assets/images/app-wide/avatars/full-0.png
+    - assets/images/app-wide/avatars/full-1.png
+    - assets/images/app-wide/avatars/full-2.png
+    - assets/images/app-wide/avatars/full-3.png
+    - assets/images/app-wide/avatars/full-4.png
+    - assets/images/app-wide/avatars/full-5.png
+    - assets/images/app-wide/avatars/full-6.png
+    - assets/images/app-wide/avatars/full-7.png
+    - assets/images/app-wide/avatars/small-0.png
+    - assets/images/app-wide/avatars/small-1.png
+    - assets/images/app-wide/avatars/small-2.png
+    - assets/images/app-wide/avatars/small-3.png
+    - assets/images/app-wide/avatars/small-4.png
+    - assets/images/app-wide/avatars/small-5.png
+    - assets/images/app-wide/avatars/small-6.png
+    - assets/images/app-wide/avatars/small-7.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

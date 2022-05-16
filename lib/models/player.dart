@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'avatar.dart';
+
 enum scoreAdjustment { truth, dare, cancel }
 
 class Player with ChangeNotifier {
@@ -54,35 +56,3 @@ class Player with ChangeNotifier {
   }
 }
 
-class Avatar {
-  final int _id;
-  final String imageUrl;
-  bool _isUsed = false;
-  bool _isAvailabe = true;
-
-  Avatar(this._id, this.imageUrl);
-
-  String get getImageUrl {
-    return imageUrl;
-  }
-
-  int get id {
-    return _id;
-  }
-
-  bool get getUsedStatus {
-    return _isUsed;
-  }
-
-  bool get isAvailable {
-    return _isAvailabe;
-  }
-
-  void setAvailability(bool availablity) {
-    _isAvailabe = availablity;
-  }
-
-  void avatarSelected(bool status) {
-    _isUsed = status;
-  }
-}

@@ -22,6 +22,7 @@ class GlossyButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
+        border: Border.all(color: Colors.white, width: 0.4),
         boxShadow: [
         BoxShadow(
           color: Colors.black.withOpacity(0.02),

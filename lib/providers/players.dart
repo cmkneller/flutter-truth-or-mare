@@ -78,6 +78,29 @@ class PlayersProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void incrementAvatar() {
+    if (_chosenAvatarId != _avatarList.length - 1) {
+      _chosenAvatarId++;
+    } else {
+      _chosenAvatarId = 0;
+    }
+
+    notifyListeners();
+  }
+  void decrementAvatar() {
+    if (_chosenAvatarId != 0) {
+      _chosenAvatarId --;
+    } else {
+      _chosenAvatarId = 0;
+    }
+
+    notifyListeners();
+  }
+
+  int get currAvatar{
+    return _chosenAvatarId;
+  }
+
   void _resetAvatars() {
     _avatarSelected = false;
     _chosenAvatarId = 0;

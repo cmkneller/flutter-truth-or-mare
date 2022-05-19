@@ -5,7 +5,7 @@ import 'package:truthormare/providers/navigation.dart';
 import '../widgets/app_wide/GlassyBox.dart';
 import '../widgets/app_wide/AnimatedTextLogo.dart';
 import '../widgets/welcome/animated_welcome_logo.dart';
-import '../widgets/welcome/animated_welcome_button.dart';
+import '../widgets/app_wide/glossy_button.dart';
 
 class intro extends StatelessWidget {
   const intro({
@@ -41,7 +41,7 @@ class intro extends StatelessWidget {
                   height: .335,
                   width: 0.85,
                   padding: 0.15,
-                  title: "Don’t Be a Dosey Mare!",
+                  title: "Don’t Be a Dozey Mare!",
                   content: " Stop horsing around and tell the truth!",
                   callToAction: "Click below to start game!"),
               const AnimatedWelcomeLogo(

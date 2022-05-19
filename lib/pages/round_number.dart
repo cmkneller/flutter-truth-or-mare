@@ -5,7 +5,7 @@ import 'package:truthormare/providers/navigation.dart';
 import 'package:truthormare/screens/player_setup_screen.dart';
 import 'package:truthormare/widgets/round_setup/horseshoe_spinner.dart';
 import 'package:truthormare/widgets/round_setup/round_number.dart';
-import 'package:truthormare/widgets/welcome/animated_welcome_button.dart';
+import 'package:truthormare/widgets/app_wide/glossy_button.dart';
 
 class RoundNumber extends StatelessWidget {
   const RoundNumber({Key? key}) : super(key: key);

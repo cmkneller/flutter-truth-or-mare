@@ -40,8 +40,9 @@ class PlayersProvider with ChangeNotifier {
     chosenAvatar.avatarSelected(false);
 
     // Generates a unique id.
+    Avatar playerAvatar = Avatar(_chosenAvatarId);
     String id = UniqueKey().toString();
-    Player generatedPlayer = Player(id, name, chosenAvatar);
+    Player generatedPlayer = Player(id, name, playerAvatar);
     _addToList(generatedPlayer);
     _resetAvatars();
   }
@@ -87,9 +88,10 @@ class PlayersProvider with ChangeNotifier {
 
     notifyListeners();
   }
+
   void decrementAvatar() {
     if (_chosenAvatarId != 0) {
-      _chosenAvatarId --;
+      _chosenAvatarId--;
     } else {
       _chosenAvatarId = 0;
     }
@@ -97,7 +99,7 @@ class PlayersProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  int get currAvatar{
+  int get currAvatar {
     return _chosenAvatarId;
   }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:truthormare/providers/players.dart';
 import 'package:truthormare/widgets/app_wide/glossy_button.dart';
 
 class SignTextField extends StatefulWidget {
@@ -62,6 +64,8 @@ class _SignTextFieldState extends State<SignTextField>
 
   @override
   Widget build(BuildContext context) {
+    PlayersProvider provider =
+        Provider.of<PlayersProvider>(context, listen: false);
     return AnimatedBuilder(
       animation: _signAnimation,
       builder: (context, child) => Positioned(
@@ -104,6 +108,9 @@ class _SignTextFieldState extends State<SignTextField>
                 child: Transform.scale(
                     scale: _signAnimation.value * 1.08,
                     child: GlossyButton(Icon(Icons.add), () {
+                      provider.generatePlayerAddToList(
+                          _playerNameTextController.text);
+                      _playerNameTextController.clear();
                     }, 23, Color.fromARGB(179, 8, 176, 14))),
               ),
           ]),

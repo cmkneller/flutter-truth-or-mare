@@ -14,6 +14,7 @@ class PlayerListView extends StatelessWidget {
     double deviceHeight = MediaQuery.of(context).size.height;
 
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
       height: deviceHeight * 0.45,
       decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -23,10 +24,31 @@ class PlayerListView extends StatelessWidget {
             Color.fromRGBO(106, 183, 69, 1),
             Color.fromRGBO(173, 203, 90, 1)
           ])),
-      child: ListView.builder(
-        itemCount: playerList.length,
-        itemBuilder: (ctx, i) => PlayerListTile(playerList[i].id,
-            playerList[i].name, playerList[i].avatar, playerData.removePlayer),
+      child: ShaderMask(
+        shaderCallback: (Rect rect) {
+          return LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromRGBO(106, 183, 69, 1),
+              Colors.transparent,
+              Colors.transparent,
+              Color.fromRGBO(173, 203, 90, 1),
+            ],
+            stops: [0.0, 0.1, 0.6, 0.9]
+          ).createShader(rect);
+        },
+                  blendMode: BlendMode.dstOut,
+
+        child: ListView.separated(
+          itemCount: playerList.length,
+          itemBuilder: (ctx, i) => PlayerListTile(
+              playerList[i].id,
+              playerList[i].name,
+              playerList[i].avatar,
+              playerData.removePlayer), 
+              separatorBuilder: (BuildContext context, int index) => SizedBox(height: 10,),
+        ),
       ),
     );
   }

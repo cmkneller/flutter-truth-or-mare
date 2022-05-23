@@ -80,6 +80,7 @@ flutter:
     - assets/images/player/cloud2.png
     - assets/images/player/sign.png
     - assets/images/player/sign.png
+    - assets/images/player/tiletexture.png
     - assets/images/app-wide/avatars/full-0.png
     - assets/images/app-wide/avatars/full-1.png
     - assets/images/app-wide/avatars/full-2.png
@@ -96,6 +97,7 @@ flutter:
     - assets/images/app-wide/avatars/small-5.png
     - assets/images/app-wide/avatars/small-6.png
     - assets/images/app-wide/avatars/small-7.png
+    - assets/images/icons/bin.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

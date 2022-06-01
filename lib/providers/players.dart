@@ -2,7 +2,7 @@
 // Author: Chris Kneller
 // Date: March 2022
 // Version: 1.
-
+import '../extensions/string_extension.dart';
 import 'package:flutter/material.dart';
 import '../models/avatar.dart';
 import '../models/player.dart';
@@ -20,6 +20,7 @@ class PlayersProvider with ChangeNotifier {
   int _playerAmount = 0;
   int _chosenAvatarId = 0;
   bool _avatarSelected = false;
+  bool _playersChosen = false;
 
   PlayersProvider() {
     // List of avatars generated inside constructor.
@@ -36,13 +37,14 @@ class PlayersProvider with ChangeNotifier {
 
   /// Accepts [name], generates a [player] instance and calls [_addToList].
   void generatePlayerAddToList(String name) {
-    chosenAvatar.setAvailability(false);
+    String playerName = name.toTitleCase();
+   
     chosenAvatar.avatarSelected(false);
 
     // Generates a unique id.
     Avatar playerAvatar = Avatar(_chosenAvatarId);
     String id = UniqueKey().toString();
-    Player generatedPlayer = Player(id, name, playerAvatar);
+    Player generatedPlayer = Player(id, playerName, playerAvatar);
     _addToList(generatedPlayer);
     _resetAvatars();
   }
@@ -63,22 +65,6 @@ class PlayersProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  /// Sets an [Avatar] as chosen based on [id]. This is utilised to update
-  /// [Avatar] selection UI widget.
-  void chooseAvatar(id) {
-    _chosenAvatarId = id;
-    _avatarSelected = true;
-    chosenAvatar.avatarSelected(true);
-
-    for (var avatar in _avatarList) {
-      if (avatar.id != chosenAvatar.id) {
-        avatar.avatarSelected(false);
-      }
-    }
-
-    notifyListeners();
-  }
-
   void incrementAvatar() {
     if (_chosenAvatarId != _avatarList.length - 1) {
       _chosenAvatarId++;
@@ -93,7 +79,7 @@ class PlayersProvider with ChangeNotifier {
     if (_chosenAvatarId != 0) {
       _chosenAvatarId--;
     } else {
-      _chosenAvatarId = 0;
+      _chosenAvatarId = _avatarList.length - 1;
     }
 
     notifyListeners();
@@ -140,6 +126,15 @@ class PlayersProvider with ChangeNotifier {
   int get playerAmount {
     // Returns amount of players.
     return _playerAmount;
+  }
+
+  bool get playersChosen {
+    return _playersChosen;
+  }
+
+  void setPlayersChosen(bool isChosen) {
+    _playersChosen = isChosen;
+    notifyListeners();
   }
 
   /// Returns a list of [Player]s ordered by score.

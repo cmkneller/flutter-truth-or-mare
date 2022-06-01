@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:truthormare/providers/game.dart';
 import 'package:truthormare/providers/navigation.dart';
-import 'package:truthormare/screens/player_setup_screen.dart';
+import 'package:truthormare/views/game_start_page_view.dart';
 import 'package:truthormare/widgets/round_setup/horseshoe_spinner.dart';
 import 'package:truthormare/widgets/round_setup/round_number.dart';
 import 'package:truthormare/widgets/app_wide/glossy_button.dart';
@@ -29,7 +29,7 @@ class RoundNumber extends StatelessWidget {
         ),
         Stack(
           alignment: Alignment.center,
-          children: [HorseshoeSpinner(), RoundNumberText()],
+          children: [HorseshoeSpinner(isRoundNumber: true, radius: (deviceWidth * 0.66) / 2, shoeWidth: 35,), RoundNumberText()],
         ),
         Container(
           width: 300,
@@ -118,10 +118,10 @@ class _AddPlayerSignState extends State<AddPlayerSign>
               scale: _animation.value,
               child: InkWell(
                 onTap: () {
-                  Navigator.of(context).pushNamed(PlayerSetupScreen.routeName);
+                  Navigator.of(context).pushNamed(GameStartPageView.routeName);
                 },
                 child: Image.asset(
-                  "assets/images/round-number/sign.png",
+                  "assets/images/round/sign.png",
                   width: widget.deviceWidth * 0.50,
                 ),
               ),

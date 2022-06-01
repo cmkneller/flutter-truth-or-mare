@@ -21,31 +21,36 @@ class _PlayerSliderState extends State<PlayerSlider> {
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
-    final PlayersProvider playerData = Provider.of<PlayersProvider>(context);
     return Container(
         height: deviceWidth,
         width: deviceWidth * 0.22,
         alignment: Alignment.bottomCenter,
-        child: AnimatedSwitcher(
-            duration: Duration(seconds: 1),
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              final rotateTween = Tween(begin: -0.05, end: 0.0).chain(CurveTween(curve: Curves.bounceInOut));
-              final rotateAnimation = animation.drive(rotateTween);
-   
-              return FadeTransition(
-                  opacity: animation.drive(CurveTween(curve: Curves.easeInCirc
-                  )),
-                  child: ScaleTransition(
-                    scale: animation,
-                    child: RotationTransition(
-                      turns: rotateAnimation,
-                      child: child,
-                    ),
-                  ));
-            },
-            child: Container(
-              key: UniqueKey(),
-              child: widget._playerImages[playerData.currAvatar],
-            )));
+        child: Selector<PlayersProvider, int>(
+          builder: (context, data, child) {
+            return AnimatedSwitcher(
+                duration: Duration(seconds: 1),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  final rotateTween = Tween(begin: -0.05, end: 0.0)
+                      .chain(CurveTween(curve: Curves.bounceInOut));
+                  final rotateAnimation = animation.drive(rotateTween);
+
+                  return FadeTransition(
+                      opacity:
+                          animation.drive(CurveTween(curve: Curves.easeInCirc)),
+                      child: ScaleTransition(
+                        scale: animation,
+                        child: RotationTransition(
+                          turns: rotateAnimation,
+                          child: child,
+                        ),
+                      ));
+                },
+                child: Container(
+                  key: UniqueKey(),
+                  child: widget._playerImages[data],
+                ));
+          },
+          selector: (context, playerProvider) => playerProvider.currAvatar,
+        ));
   }
 }

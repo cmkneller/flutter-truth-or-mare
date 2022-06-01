@@ -1,3 +1,5 @@
+import 'package:vector_math/vector_math_64.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:math' as math;
@@ -5,69 +7,72 @@ import 'dart:math' as math;
 import 'package:truthormare/providers/game.dart';
 
 class MiniHorseShoe extends StatefulWidget {
-  final _shoeState = _MiniHorseShoeState();
   final int index;
+  final double shoeWidth;
   final double radius;
-  final bool isVisible = false;
+  final bool isVisible = true;
   final int itemCount;
-  // ignore: use_key_in_widget_constructors
-  MiniHorseShoe(this.index, this.radius, this.itemCount);
+  late Image image = Image.asset(
+    "assets/images/round/minihorseshoe.png",
+    width: shoeWidth,
+  );
+  final double randomSeed = math.Random().nextDouble() * 2;
 
-  @override
-  State<MiniHorseShoe> createState() => _shoeState;
+  late double angle = index * math.pi * 2 / itemCount;
+
+  MiniHorseShoe({ required this.index, required this.radius, required this.itemCount, required this.shoeWidth});
+
+  // ignore: use_key_in_widget_constructors
+
+  MiniHorseShoeState createState() => MiniHorseShoeState();
 }
 
-class _MiniHorseShoeState extends State<MiniHorseShoe>
+class MiniHorseShoeState extends State<MiniHorseShoe>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation _grow;
-  final Image image =
-      Image.asset("assets/images/round-number/minihorseshoe.png");
-  bool isVisible = false;
-  late double angle;
+  late AnimationController swingController;
+  late Animation swingAnimation;
+  @override
+  void initState() {
+    swingController = AnimationController(
+        vsync: this,
+        duration:
+            Duration(milliseconds: 2000 + (widget.randomSeed * 100).round()));
+    swingAnimation = Tween(
+            begin: -1 - widget.randomSeed, end: 1 + widget.randomSeed)
+        .animate(
+            CurvedAnimation(parent: swingController, curve: Curves.bounceOut));
+
+    swingController.addListener(() {
+      if (swingController.isCompleted) {
+        swingController.repeat(reverse: true);
+      }
+    });
+
+    swingController.forward();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _controller.dispose();
+    swingController.dispose();
     super.dispose();
-  }
-
-  @override
-  initState() {
-    angle = widget.index * math.pi * 2 / widget.itemCount;
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
-    _grow = Tween<double>(begin: 0, end: 1).animate(_controller);
-    super.initState();
   }
 
   Widget build(BuildContext context) {
     GameProvider gameLogic = Provider.of<GameProvider>(context);
 
-    if (gameLogic.roundAmount == widget.index && !isVisible) {
-      _controller.forward();
-      isVisible = true;
-    }
-
-    if (gameLogic.roundAmount + 1 == widget.index && isVisible) {
-      _controller.reverse();
-      isVisible = false;
-    }
-
     return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) => Positioned(
-        width: 38,
-        child: Transform.scale(
-          scale: _grow.value,
-          child: Transform.translate(
-            offset: Offset(math.sin(angle) * widget.radius,
-                math.cos(angle) * widget.radius),
-            child: image,
-          ),
-        ),
-      ),
-    );
+        animation: swingController,
+        builder: (context, child) => Transform(
+              transform: Matrix4.translation(Vector3(
+                  math.sin(widget.angle) * widget.radius,
+                  math.cos(widget.angle) * widget.radius,
+                  0.0))
+                ..rotateZ(swingAnimation.value),
+              alignment: FractionalOffset.center,
+              child: widget.image,
+            ));
   }
 }

@@ -1,24 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:truthormare/providers/game.dart';
+
 import 'package:truthormare/widgets/round_setup/mini_horse_shoe.dart';
-import 'package:truthormare/widgets/round_setup/round_number.dart';
+import 'package:truthormare/widgets/round_setup/round_number_horse_shoe.dart';
 
 class HorseshoeSpinner extends StatefulWidget {
-  HorseshoeSpinner({Key? key}) : super(key: key);
-  final List<MiniHorseShoe> horseShoeList = [
-    MiniHorseShoe(1, 120, 5),
-    MiniHorseShoe(2, 120, 5),
-    MiniHorseShoe(3, 120, 5),
-    MiniHorseShoe(4, 120, 5),
-    MiniHorseShoe(5, 120, 5),
-  ];
+  final bool isRoundNumber;
+  final double radius;
+  final double shoeWidth;
+  late int amount;
+  late List<Widget> horseShoeList = [];
+  HorseshoeSpinner(
+      {required this.isRoundNumber,
+      required this.radius,
+      required this.shoeWidth,
+      this.amount = 5,
+      Key? key})
+      : super(key: key) {
+    fillOutList();
+  }
+
+  void fillOutList() {
+    for (int i = 0; i < amount; i++) {
+      horseShoeList.add(isRoundNumber
+          ? RoundNumberHorseShoe(index:i, radius: radius, itemCount: amount, shoeWidth: shoeWidth,)
+          : MiniHorseShoe(index:i, radius: radius, itemCount: amount, shoeWidth: shoeWidth,));
+    }
+  }
 
   @override
-  State<HorseshoeSpinner> createState() => _horseshoeSpinnerState();
+  State<HorseshoeSpinner> createState() => _HorseshoeSpinnerState();
 }
 
-class _horseshoeSpinnerState extends State<HorseshoeSpinner>
+class _HorseshoeSpinnerState extends State<HorseshoeSpinner>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation _rotationAnimation;
@@ -47,9 +60,7 @@ class _horseshoeSpinnerState extends State<HorseshoeSpinner>
 
   @override
   Widget build(BuildContext context) {
-
     // Logic to show shoe:
- 
 
     return AnimatedBuilder(
       animation: _controller,

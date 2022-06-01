@@ -42,13 +42,18 @@ class _AddPlayerBackgroundState extends State<AddPlayerBackground>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          "assets/images/player/backgroundPlate.png",
+        Positioned(
+          bottom: 0,
+          width: widget._deviceWidth,
+          child: Image.asset(
+            "assets/images/player/backgroundPlate.png",
+            
+          ),
         ),
         AnimatedBuilder(
           animation: _cloudAnimation,
           builder: (context, child) => Positioned(
-            top: 0,
+            top: 10,
             right: 0,
             width: widget._deviceWidth * 0.5,
             child: Transform.translate(
@@ -60,7 +65,7 @@ class _AddPlayerBackgroundState extends State<AddPlayerBackground>
         AnimatedBuilder(
           animation: _cloudAnimation,
           builder: (context, child) => Positioned(
-            top: 50,
+            top: 90,
             left: 0,
             width: widget._deviceWidth * 0.3,
             child: Transform.translate(

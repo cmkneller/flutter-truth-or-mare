@@ -66,10 +66,18 @@ class _SignTextFieldState extends State<SignTextField>
   Widget build(BuildContext context) {
     PlayersProvider provider =
         Provider.of<PlayersProvider>(context, listen: false);
+
+    void submitText() {
+      if (_validated) {
+        provider.generatePlayerAddToList(_playerNameTextController.text);
+        _playerNameTextController.clear();
+      }
+    }
+
     return AnimatedBuilder(
       animation: _signAnimation,
       builder: (context, child) => Positioned(
-        bottom: widget._deviceWidth * 0.185,
+        bottom: widget._deviceWidth * 0.16,
         width: widget._deviceWidth * 0.66,
         child: Transform.scale(
           scale: _validated ? 1 : _signAnimation.value,
@@ -88,6 +96,9 @@ class _SignTextFieldState extends State<SignTextField>
               bottom: 39,
               width: 110,
               child: TextField(
+                onSubmitted: ((value) => {
+                  submitText()
+                }),
                 controller: _playerNameTextController,
                 textCapitalization: TextCapitalization.characters,
                 style: const TextStyle(
@@ -107,11 +118,8 @@ class _SignTextFieldState extends State<SignTextField>
                 top: 50,
                 child: Transform.scale(
                     scale: _signAnimation.value * 1.08,
-                    child: GlossyButton(Icon(Icons.add), () {
-                      provider.generatePlayerAddToList(
-                          _playerNameTextController.text);
-                      _playerNameTextController.clear();
-                    }, 23, Color.fromARGB(179, 8, 176, 14))),
+                    child: GlossyButton(Icon(Icons.add), submitText, 23,
+                        Color.fromARGB(179, 8, 176, 14))),
               ),
           ]),
         ),

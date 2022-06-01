@@ -39,6 +39,7 @@ dependencies:
   either_dart: ^0.1.4
   path: ^1.8.0
   path_provider: ^2.0.9
+  property_change_notifier: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -71,16 +72,19 @@ flutter:
     - assets/images/logo/mare_logo.png
     - assets/images/logo/truth_logo.png
     - assets/images/logo/or_logo.png
-    - assets/images/round-number/minihorseshoe.png
-    - assets/images/round-number/sign.png
+    - assets/images/round/minihorseshoe.png
+    - assets/images/round/sign.png
+    - assets/images/round/round-background-panel.png
+    - assets/images/round/round-foreground-panel.png
     - assets/images/player/backgroundPlate.png
     - assets/images/player/foregroundPlate.png
     - assets/images/player/midgroundPlate.png
     - assets/images/player/cloud1.png
     - assets/images/player/cloud2.png
     - assets/images/player/sign.png
-    - assets/images/player/sign.png
     - assets/images/player/tiletexture.png
+    - assets/images/player/playbtnbackground.png
+    - assets/images/player/playbtnforeground.png
     - assets/images/app-wide/avatars/full-0.png
     - assets/images/app-wide/avatars/full-1.png
     - assets/images/app-wide/avatars/full-2.png

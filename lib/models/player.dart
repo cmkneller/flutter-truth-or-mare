@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:property_change_notifier/property_change_notifier.dart';
 
 import 'avatar.dart';
 
 enum scoreAdjustment { truth, dare, cancel }
 
-class Player with ChangeNotifier {
+class Player extends PropertyChangeNotifier <String> {
   // General model for the Player Model, named fields are set in
   // the player-setup-screen
 

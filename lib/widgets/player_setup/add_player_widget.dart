@@ -20,6 +20,7 @@ class AddPlayerWidget extends StatelessWidget {
 
     return Container(
       height: _deviceHeight * 0.55,
+      width: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           end: Alignment.topLeft,
@@ -35,14 +36,14 @@ class AddPlayerWidget extends StatelessWidget {
         children: [
           AddPlayerBackground(deviceWidth: _deviceWidth),
           Positioned(
-              width: _deviceWidth * 1.09,
+              width: _deviceWidth * 1.02,
               child: Image.asset(
                 "assets/images/player/midgroundPlate.png",
               )),
           Positioned(
               bottom: _deviceWidth * 0.14, child: PlayerSlider(playerAvatars)),
           Positioned(
-            width: _deviceWidth * 1.09,
+            width: _deviceWidth * 1.02,
             child: IgnorePointer(
               child: Image.asset(
                 "assets/images/player/foregroundPlate.png",

@@ -4,12 +4,14 @@
 // Version 1.
 
 import 'package:flutter/material.dart';
+import 'package:property_change_notifier/property_change_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:truthormare/providers/navigation.dart';
 import 'package:truthormare/screens/customise_game_screen.dart';
 import 'package:truthormare/screens/error_screen.dart';
 import 'package:truthormare/screens/round_intro_screen.dart';
 import 'package:either_dart/either.dart';
+import 'package:truthormare/views/game_start_page_view.dart';
 
 // Import Screens
 
@@ -124,7 +126,7 @@ class MyApp extends StatelessWidget {
             PlayerIntroScreen.routeName: (ctx) => const PlayerIntroScreen(),
             MainGameScreen.routeName: (ctx) => const MainGameScreen(),
             FinalScoresScreen.routeName: (ctx) => const FinalScoresScreen(),
-            RoundIntroScreen.routeName: (ctx) => const RoundIntroScreen(),
+            GameStartPageView.routeName: (ctx) =>  GameStartPageView(),
           },
         ),
       ),

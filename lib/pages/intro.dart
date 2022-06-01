@@ -17,7 +17,8 @@ class intro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NavigationProvider pageLogic = Provider.of<NavigationProvider>(context, listen: false);
+    NavigationProvider pageLogic =
+        Provider.of<NavigationProvider>(context, listen: false);
     void startGame() {
       pageLogic.setPageID(1);
     }
@@ -26,9 +27,7 @@ class intro extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const SizedBox(
-          height: 100,
-        ),
+        SizedBox(height: deviceHeight * 0.05),
         AnimatedTextLogo(),
         Container(
           height: 0.75 * deviceHeight,
@@ -38,7 +37,7 @@ class intro extends StatelessWidget {
             children: [
               GlassyBox(
                   topPosition: 0.33,
-                  height: .335,
+                  height: .380,
                   width: 0.85,
                   padding: 0.15,
                   title: "Don’t Be a Dozey Mare!",
@@ -49,13 +48,13 @@ class intro extends StatelessWidget {
                 width: 1.08,
               ),
               Positioned(
-                  bottom: deviceHeight * 0.040,
+                  bottom: deviceHeight * 0.00,
                   child: GlossyButton(
                     Icon(
                       Icons.arrow_forward_ios_rounded,
                     ),
                     startGame,
-                    40,
+                    30,
                   )),
             ],
           ),

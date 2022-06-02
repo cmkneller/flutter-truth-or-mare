@@ -21,7 +21,7 @@ class _RoundPlayerPageViewState extends State<RoundPlayerPageView> {
     }
 
     return Container(
-        decoration: BoxDecoration(
+        decoration:const  BoxDecoration(
             gradient: LinearGradient(begin: Alignment.topLeft, colors: [
           Color.fromARGB(255, 192, 65, 185),
           Color.fromARGB(255, 148, 90, 203),

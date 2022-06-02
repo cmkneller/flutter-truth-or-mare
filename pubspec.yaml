@@ -73,6 +73,9 @@ flutter:
     - assets/images/logo/truth_logo.png
     - assets/images/logo/or_logo.png
     - assets/images/round/minihorseshoe.png
+    - assets/images/round/minihorseshoebackground.png
+    - assets/images/round/minihorseshoeshine.png
+    - assets/images/round/minihorseshoemask.png
     - assets/images/round/sign.png
     - assets/images/round/round-background-panel.png
     - assets/images/round/round-foreground-panel.png

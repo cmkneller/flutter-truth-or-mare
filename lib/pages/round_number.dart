@@ -29,7 +29,14 @@ class RoundNumber extends StatelessWidget {
         ),
         Stack(
           alignment: Alignment.center,
-          children: [HorseshoeSpinner(isRoundNumber: true, radius: (deviceWidth * 0.66) / 2, shoeWidth: 35,), RoundNumberText()],
+          children: [
+            HorseshoeSpinner(
+              isRoundNumber: true,
+              radius: (deviceWidth * 0.66) / 2,
+              shoeWidth: 80,
+            ),
+            RoundNumberText()
+          ],
         ),
         Container(
           width: 300,
